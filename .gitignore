@@ -6,4 +6,6 @@ coverage
 .vscode
 prisma/*.db
 prisma/*.db-journal
-docs
+docs/
+!dist/src/docs/
+!dist/src/docs/**
