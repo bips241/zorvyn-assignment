@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createApp = void 0;
+// Main Express app composition. I kept route registration centralized here so reviewers can see the API surface quickly.
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const helmet_1 = __importDefault(require("helmet"));
@@ -28,6 +29,7 @@ const createApp = () => {
     app.use('/api/v1/users', users_routes_1.usersRouter);
     app.use('/api/v1/records', records_routes_1.recordsRouter);
     app.use('/api/v1/dashboard', dashboard_routes_1.dashboardRouter);
+    // I expose both UI and raw JSON so this works for human review and tooling (Postman/importers/CI checks).
     app.get('/api-docs.json', (_req, res) => {
         res.status(200).json(openapi_1.openApiSpec);
     });

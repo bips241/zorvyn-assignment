@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteRecord = exports.updateRecord = exports.getRecordById = exports.listRecords = exports.createRecord = void 0;
+// Records service encapsulates CRUD + filtering while keeping money-safe values as Prisma Decimal in storage.
 const client_1 = require("@prisma/client");
 const prisma_1 = require("../../database/prisma");
 const http_error_1 = require("../../shared/http/http-error");
@@ -32,6 +33,7 @@ const createRecord = async (input) => {
 };
 exports.createRecord = createRecord;
 const listRecords = async (input) => {
+    // Date filters are optional and can be combined with type/category for dashboard-friendly querying.
     const where = {
         type: input.type,
         category: input.category,

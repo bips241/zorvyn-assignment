@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// Runtime entrypoint. I keep bootstrapping minimal here and delegate all wiring to `createApp()`.
 const dotenv_1 = __importDefault(require("dotenv"));
 const app_1 = require("./app");
 dotenv_1.default.config();

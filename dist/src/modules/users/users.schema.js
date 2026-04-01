@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUserStatusSchema = exports.updateUserSchema = exports.listUsersSchema = exports.createUserSchema = void 0;
+// User module validation contracts. I keep these strict to fail fast before business logic runs.
 const zod_1 = require("zod");
 const roleEnum = zod_1.z.enum(['VIEWER', 'ANALYST', 'ADMIN']);
 const statusEnum = zod_1.z.enum(['ACTIVE', 'INACTIVE']);

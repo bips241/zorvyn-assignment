@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.usersRouter = void 0;
+// Users routes are admin-governed. Middleware order is: auth -> permission -> validation -> handler.
 const express_1 = require("express");
 const authenticate_1 = require("../../shared/middleware/authenticate");
 const authorize_1 = require("../../shared/middleware/authorize");

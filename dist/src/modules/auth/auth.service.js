@@ -4,11 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginUser = void 0;
+// Auth service: validates credentials, enforces active status, then issues JWT.
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const prisma_1 = require("../../database/prisma");
 const jwt_1 = require("../../shared/auth/jwt");
 const http_error_1 = require("../../shared/http/http-error");
 const loginUser = async ({ email, password }) => {
+    // I intentionally return the same message for email/password mismatch to avoid user-enumeration clues.
     const user = await prisma_1.prisma.user.findUnique({
         where: { email },
     });

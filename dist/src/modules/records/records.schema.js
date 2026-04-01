@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateRecordSchema = exports.recordByIdSchema = exports.listRecordsSchema = exports.createRecordSchema = void 0;
+// Record request validation schemas. Amount stays positive and transaction direction comes from `type`.
 const zod_1 = require("zod");
 const recordTypeEnum = zod_1.z.enum(['INCOME', 'EXPENSE']);
 exports.createRecordSchema = zod_1.z.object({

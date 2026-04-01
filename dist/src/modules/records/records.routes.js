@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.recordsRouter = void 0;
+// Records routes enforce read/write permissions per endpoint so role behavior is explicit in one place.
 const express_1 = require("express");
 const authenticate_1 = require("../../shared/middleware/authenticate");
 const authorize_1 = require("../../shared/middleware/authorize");

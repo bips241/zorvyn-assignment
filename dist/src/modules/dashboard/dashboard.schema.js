@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.recentActivitySchema = exports.trendsSchema = exports.categoryBreakdownSchema = exports.summarySchema = void 0;
+// Dashboard query validation shared across summary/breakdown/trend endpoints.
 const zod_1 = require("zod");
 const baseDateQuery = {
     fromDate: zod_1.z.coerce.date().optional(),

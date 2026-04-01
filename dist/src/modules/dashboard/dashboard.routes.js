@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dashboardRouter = void 0;
+// Dashboard endpoints are read-only and protected uniformly with `dashboard.read` permission.
 const express_1 = require("express");
 const authenticate_1 = require("../../shared/middleware/authenticate");
 const authorize_1 = require("../../shared/middleware/authorize");

@@ -12,6 +12,7 @@ const buildDateWhere = ({ fromDate, toDate }) => ({
 });
 const toNumber = (value) => Number(value);
 const toWeeklyKey = (date) => {
+    // ISO week normalization keeps weekly trend buckets stable across timezones.
     const utc = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
     const day = utc.getUTCDay() || 7;
     utc.setUTCDate(utc.getUTCDate() + 4 - day);

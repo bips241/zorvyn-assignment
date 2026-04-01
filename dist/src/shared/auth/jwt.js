@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyAccessToken = exports.signAccessToken = void 0;
+// JWT helper utilities used by auth and middleware layers.
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const http_error_1 = require("../http/http-error");
 const getJwtSecret = () => {

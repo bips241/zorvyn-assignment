@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUserStatus = exports.updateUser = exports.listUsers = exports.createUser = void 0;
+// Users service handles admin-facing user lifecycle operations with explicit conflict/not-found checks.
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const prisma_1 = require("../../database/prisma");
 const http_error_1 = require("../../shared/http/http-error");
@@ -35,6 +36,7 @@ const createUser = async (input) => {
 };
 exports.createUser = createUser;
 const listUsers = async (input) => {
+    // Pagination and lightweight filtering are built in so admin dashboards can scale without extra endpoints.
     const where = {
         role: input.role,
         status: input.status,

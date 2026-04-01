@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginSchema = void 0;
+// Auth input contract. Validation stays close to module entrypoints for easy review.
 const zod_1 = require("zod");
 exports.loginSchema = zod_1.z.object({
     body: zod_1.z.object({
