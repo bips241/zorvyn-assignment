@@ -1,6 +1,5 @@
 node_modules
 .env
-dist
 coverage
 *.log
 .DS_Store
@@ -8,4 +7,3 @@ coverage
 prisma/*.db
 prisma/*.db-journal
 docs
-tests

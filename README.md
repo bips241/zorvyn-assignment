@@ -45,8 +45,10 @@ Cross-cutting:
 Default server: `http://localhost:4000`
 
 ## API Documentation (Swagger)
-- Swagger UI: `http://localhost:4000/api-docs`
-- OpenAPI JSON: `http://localhost:4000/api-docs.json`
+- Swagger UI (local): `http://localhost:4000/api-docs`
+- OpenAPI JSON (local): `http://localhost:4000/api-docs.json`
+- Swagger UI (deployed): `https://zorvyn-assignment-kysl.onrender.com/api-docs`
+- OpenAPI JSON (deployed): `https://zorvyn-assignment-kysl.onrender.com/api-docs.json`
 
 Documentation includes request/response contracts, auth requirements, query params, and status code behavior.
 
