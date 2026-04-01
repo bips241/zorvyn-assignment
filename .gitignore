@@ -7,5 +7,5 @@ coverage
 prisma/*.db
 prisma/*.db-journal
 docs/
-!dist/src/docs/
-!dist/src/docs/**
+dist
+!src/docs
