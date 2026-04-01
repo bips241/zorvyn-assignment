@@ -29,10 +29,29 @@ export const createApp = () => {
   app.use('/api/v1/dashboard', dashboardRouter);
 
   // I expose both UI and raw JSON so this works for human review and tooling (Postman/importers/CI checks).
-  app.get('/api-docs.json', (_req, res) => {
-    res.status(200).json(openApiSpec);
+  app.get('/api-docs.json', (req, res) => {
+    const host = req.get('host');
+    const forwardedProto = req.get('x-forwarded-proto')?.split(',')[0]?.trim();
+    const protocol = forwardedProto || req.protocol;
+    const currentOrigin = host ? `${protocol}://${host}` : undefined;
+
+    const existingServers = openApiSpec.servers ?? [];
+    const servers = currentOrigin
+      ? [
+          { url: currentOrigin, description: 'Current server' },
+          ...existingServers.filter((server) => server.url !== currentOrigin),
+        ]
+      : existingServers;
+
+    res.status(200).json({ ...openApiSpec, servers });
   });
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiSpec));
+  app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(undefined, {
+      swaggerOptions: { url: '/api-docs.json' },
+    })
+  );
 
   app.use(notFoundHandler);
   app.use(globalErrorHandler);
