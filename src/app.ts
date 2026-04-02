@@ -36,12 +36,17 @@ export const createApp = () => {
     const currentOrigin = host ? `${protocol}://${host}` : undefined;
 
     const existingServers = openApiSpec.servers ?? [];
-    const servers = currentOrigin
-      ? [
-          { url: currentOrigin, description: 'Current server' },
-          ...existingServers.filter((server) => server.url !== currentOrigin),
-        ]
-      : existingServers;
+    const servers =
+      process.env.NODE_ENV === 'production'
+        ? currentOrigin
+          ? [{ url: currentOrigin, description: 'Current server' }]
+          : existingServers.filter((server) => server.url !== 'http://localhost:4000')
+        : currentOrigin
+          ? [
+              { url: currentOrigin, description: 'Current server' },
+              ...existingServers.filter((server) => server.url !== currentOrigin),
+            ]
+          : existingServers;
 
     res.status(200).json({ ...openApiSpec, servers });
   });

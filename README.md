@@ -9,7 +9,7 @@ Backend assignment submission for finance data processing, role-based access con
 - Node.js + TypeScript
 - Express.js
 - Prisma ORM
-- SQLite (local evaluator-friendly)
+- PostgreSQL (Supabase in production, local env configurable)
 - Zod validation
 - JWT auth
 - Vitest + Supertest
@@ -49,8 +49,18 @@ Default server: `http://localhost:4000`
 - OpenAPI JSON (local): `http://localhost:4000/api-docs.json`
 - Swagger UI (deployed): `https://zorvyn-assignment-kysl.onrender.com/api-docs`
 - OpenAPI JSON (deployed): `https://zorvyn-assignment-kysl.onrender.com/api-docs.json`
+- Hosted API base URL: `https://zorvyn-assignment-kysl.onrender.com/api/v1`
+
+### Quick test link for reviewers:  `https://zorvyn-assignment-kysl.onrender.com/api-docs`
 
 Documentation includes request/response contracts, auth requirements, query params, and status code behavior.
+
+### Authenticate in Swagger (deployed)
+1. Open `https://zorvyn-assignment-kysl.onrender.com/api-docs`
+2. Call `POST /api/v1/auth/login` with one of the credentials listed below.
+3. Copy `data.accessToken` from response.
+4. Click **Authorize** and paste: `Bearer <accessToken>`
+5. Call protected endpoints (`/auth/me`, `/users`, `/records`, `/dashboard`).
 
 ## Seeded Users
 - `admin@example.com` / `admin123`
@@ -104,12 +114,11 @@ Base prefix: `/api/v1`
 - Full smoke verification: `npm run verify`
 
 ## Notes / Tradeoffs
-- SQLite is chosen for low-friction evaluator setup.
+- PostgreSQL is used through Prisma with a pooled runtime connection and a direct migration connection.
 - Single-role-per-user model keeps authorization explicit and simple.
 - Dashboard analytics are computed on-demand for clarity.
 
 ## Supporting Documents
-- [Project Plan](docs/PLAN.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [API Spec](docs/API_SPEC.md)
 - [RBAC Matrix](docs/RBAC_MATRIX.md)
