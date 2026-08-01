@@ -1,0 +1,14 @@
+[metadata]
+author_name = "Biplab Mal"
+author_email = "biplabmal626@gmail.com"
+difficulty = "medium"
+category = "bug-fix"
+
+[timeouts]
+build = 300
+test = 120
+solution_apply = 30
+
+[resources]
+memory_mb = 2048
+cpu_count = 2
